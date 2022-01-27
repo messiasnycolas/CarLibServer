@@ -7,7 +7,7 @@ async function getModels() {
     return brands;
 }
 
-export async function moreModels(_req, res, _next) {
+export async function mostModels(_req, res, _next) {
     try {
         const brands = await getModels();
         const max = brands[0].models.length;
@@ -24,7 +24,7 @@ export async function moreModels(_req, res, _next) {
     }
 }
 
-export async function lessModels(_req, res, _next) {
+export async function fewestModels(_req, res, _next) {
     try {
         let brands = await getModels();
         brands = brands.reverse();
@@ -56,7 +56,7 @@ export async function topRange(req, res, _next) {
     }
 }
 
-export async function lowRange(req, res, _next) {
+export async function bottomRange(req, res, _next) {
     try {
         const num = req.params.x;
         let brands = await getModels();
@@ -73,7 +73,7 @@ export async function lowRange(req, res, _next) {
 
 export async function listModelsFrom(req, res, _next) {
     try {
-        let brand = req.params.marca;
+        let brand = req.params.brand;
         const brands = await getModels();
         brand = brand.toUpperCase();
         let modelsArr = [];
@@ -82,7 +82,7 @@ export async function listModelsFrom(req, res, _next) {
                 modelsArr.push(brands[i].models);
             }
         }
-        res.send(modelsArr);
+        res.send(...modelsArr);
     } catch (error) {
         res.status(400).send(error);
     }

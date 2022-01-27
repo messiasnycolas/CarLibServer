@@ -1,18 +1,18 @@
-import express from "express";
+import { Router } from "express";
 import {
-    moreModels,
-    lessModels,
+    mostModels,
+    fewestModels,
     topRange,
-    lowRange,
+    bottomRange,
     listModelsFrom,
 } from "../controllers/carController.js"
 
-const router = express.Router();
+const router = Router();
 
-router.get("/maisModelos", moreModels);
-router.get("/menosModelos", lessModels);
-router.get("/listaMaisModelos/:x", topRange);
-router.get("/listaMenosModelos/:x", lowRange);
-router.get("/listaModelos/:marca", listModelsFrom);
+router.get("/mostModels", mostModels);
+router.get("/fewestModels", fewestModels);
+router.get("/topRange/:x", topRange);
+router.get("/bottomRange/:x", bottomRange);
+router.get("/listModels/:brand", listModelsFrom);
 
 export default router;
